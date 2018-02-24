@@ -8,6 +8,7 @@
       <router-link to="/hi/hi1">page1</router-link>
       <router-link to="/hi/hi2">page2</router-link>
     </div>
+    <div class="navinfo">this is navinfo: {{ $route.name }}</div>
     <router-view></router-view>
   </div>
 </template>
