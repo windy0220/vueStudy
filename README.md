@@ -11,6 +11,7 @@ vue学习笔记 来源于网络
   2.  [router-link制作导航](#router-link制作导航)
   3.  [配置子路由](#配置子路由)
   4.  [传参](#传参)
+  5. [单页面多路由区域操作](#单页面多路由区域操作)
 # 安装VueCli
 安装cnpm
 ```bash
@@ -466,5 +467,39 @@ routes: [
 最后在模板里(src/components/Hi1.vue)用$route.params.username进行接收.
 ```js
 {{$route.params.username}}
+```
+## 单页面多路由区域操作
+在一个页面上调用多个 `<router-view></router-view>` 并控制所显示的内容。
+使用 `name` 来区分。
+src/App.vue
+```js
+<router-view></router-view>
+<router-view name="left" class="leftbox"></router-view>
+<router-view name="right" class="rightbox"></router-view>
+```
+新建所需的组件 left.vue right1.vue right2.vue 并在 router/index.js 中导入
+src/router/index.js
+components 中定义各 router-view 的显示内容 routerViewName:componentName
+坑 `component` 注意加 s
+```js
+export default new Router({
+  routes: [{
+    path: '/',
+    name: 'HelloWorld',
+    components: {
+      left:Left,
+      right:Right1
+    }
+  },
+  {
+    path: '/r1',
+    name: 'HelloWorld',
+    components: {
+      left:Left,
+      right:Right2
+    }
+  }
+]
+})
 ```
 

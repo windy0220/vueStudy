@@ -4,12 +4,14 @@
     
     <div class="nav">
       <router-link to="/">首页</router-link>
-      <router-link to="/hi">page</router-link>
-      <router-link :to="{ name:'hi1', params:{username:'windy'}}"> page1 </router-link>
-      <router-link to="/hi/hi2">page2</router-link>
+      <router-link to="/r1">page1</router-link>
     </div>
-    <div class="navinfo">this is navinfo: {{ $route.name }}</div>
-    <router-view></router-view>
+    <div class="box">
+      <router-view></router-view>
+      <router-view name="left" class="leftbox"></router-view>
+      <router-view name="right" class="rightbox"></router-view>
+    </div>
+    
   </div>
 </template>
 
@@ -27,5 +29,21 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.box{
+  width: 1200px;
+  margin: 0 auto;
+}
+.leftbox {
+  float: left;
+  width: 200px;
+  background: #ccc;
+  height: 500px;
+}
+.rightbox {
+  float: right;
+  width: 1000px;
+  background: #2c3e50;
+  height: 500px;
 }
 </style>
