@@ -1,4 +1,8 @@
-[TOC]
+# README
+
+# 目录
+- [安装VueCli](# 安装VueCli)
+- [vue-router](# vue-router)
 
 # 安装VueCli
 安装cnpm
@@ -34,7 +38,7 @@ vue init webpack <项目名称>
 
 运行 ```npm run build``` 打包文件 将 dist 文件夹下的内容上传到服务器即可。
 
-# 目录结构
+## 目录结构
 ```
 |-- build                            // 项目构建(webpack)相关代码
 |   |-- build.js                     // 生产环境构建代码
