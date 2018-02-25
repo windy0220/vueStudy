@@ -1,8 +1,8 @@
 # README
 
 # 目录
-- [安装VueCli](# 安装VueCli)
-- [vue-router](# vue-router)
+- [安装VueCli](#安装VueCli)
+- [vue-router](#vue-router)
 
 # 安装VueCli
 安装cnpm
