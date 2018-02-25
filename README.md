@@ -1,7 +1,3 @@
-# myvuetest
-
-> yep!this is my vue files
-
 [TOC]
 
 # 安装VueCli
