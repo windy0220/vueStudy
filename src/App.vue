@@ -5,7 +5,7 @@
     <div class="nav">
       <router-link to="/">首页</router-link>
       <router-link to="/hi">page</router-link>
-      <router-link to="/hi/hi1">page1</router-link>
+      <router-link :to="{ name:'hi1', params:{username:'windy'}}"> page1 </router-link>
       <router-link to="/hi/hi2">page2</router-link>
     </div>
     <div class="navinfo">this is navinfo: {{ $route.name }}</div>

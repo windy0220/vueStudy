@@ -1,5 +1,9 @@
 <template>
+<div>
   <div class="hi">{{msg}}</div>
+  <div>{{ $route.params.username }}</div>
+</div>
+
 </template>
 
 <script>
