@@ -469,8 +469,8 @@ routes: [
 {{$route.params.username}}
 ```
 ## 单页面多路由区域操作
-在一个页面上调用多个 `<router-view></router-view>` 并控制所显示的内容。
-使用 `name` 来区分。
+在一个页面上调用多个 `<router-view></router-view>` 并控制所显示的内容。使用 `name` 来区分。
+
 src/App.vue
 ```js
 <router-view></router-view>
