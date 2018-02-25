@@ -4,7 +4,7 @@
     
     <div class="nav">
       <router-link to="/">首页</router-link>
-      <router-link to="/r1">page1</router-link>
+      <router-link to="/r1/新闻标题/新闻内容">page1</router-link>
     </div>
     <div class="box">
       <router-view></router-view>

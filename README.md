@@ -479,9 +479,9 @@ src/App.vue
 ```
 新建所需的组件 left.vue right1.vue right2.vue 并在 router/index.js 中导入
 
-components 中定义各 router-view 的显示内容 routerViewName:componentName
+`components` 中定义各 `router-view` 的显示内容 `routerViewName:componentName`
 
- *** 坑 `component` 注意加 s ***
+> 坑 component  注意加 
 
 src/router/index.js
 
@@ -506,4 +506,34 @@ export default new Router({
 ]
 })
 ```
+## 通过 url 传参
+在 src/router/index.js 中的 path 上添加参数绑定 `path: '/路径/:参数1/:参数2',`
 
+```js
+{
+    path: '/r1/:newsTit/:newsContent',
+    name: 'r1',
+    components: {
+      left:Left,
+      right:Right2
+    }
+}
+```
+在 App.vue router-link 中加入要传递的参数 
+
+```
+<router-link to="/r1/新闻标题/新闻内容">page1</router-link>
+```
+
+在组件中 使用 {{ $route.params.参数 }} 接收
+
+```
+<div class="tit">{{ $route.params.newsTit }}</div>
+<div class="content">{{ $route.params.newsContent }}</div>
+```
+
+使用正则来限制出入参数的形式。若参数不符则页面不会显示
+
+```
+path:'/params/:newsId(\\d+)/:newsTitle',
+```

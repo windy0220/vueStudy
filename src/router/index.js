@@ -17,8 +17,8 @@ export default new Router({
     }
   },
   {
-    path: '/r1',
-    name: 'HelloWorld',
+    path: '/r1/:newsTit/:newsContent',
+    name: 'r1',
     components: {
       left:Left,
       right:Right2
