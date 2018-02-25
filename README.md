@@ -2,7 +2,7 @@
 
 > yep!this is my vue files
 
-[toc]
+[TOC]
 
 # 安装VueCli
 安装cnpm
