@@ -478,9 +478,13 @@ src/App.vue
 <router-view name="right" class="rightbox"></router-view>
 ```
 新建所需的组件 left.vue right1.vue right2.vue 并在 router/index.js 中导入
-src/router/index.js
+
 components 中定义各 router-view 的显示内容 routerViewName:componentName
-坑 `component` 注意加 s
+
+ *坑 `component` 注意加 s *
+
+src/router/index.js
+
 ```js
 export default new Router({
   routes: [{
