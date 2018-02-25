@@ -481,7 +481,7 @@ src/App.vue
 
 components 中定义各 router-view 的显示内容 routerViewName:componentName
 
- *坑 `component` 注意加 s *
+ *** 坑 `component` 注意加 s ***
 
 src/router/index.js
 
