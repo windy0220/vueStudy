@@ -1,9 +1,16 @@
 # README
+vue学习笔记 来源于网络
 
 # 目录
-- [安装VueCli](#安装VueCli)
+- [VueCli](#安装VueCli)
+  1.  [安装](#安装VueCli)
+  2.  [目录结构](#目录结构)
+  3.  [各文件解读](#main.js文件解读)
 - [vue-router](#vue-router)
-
+  1.  [增加一个Hi的路由和页面](#增加一个Hi的路由和页面)
+  2.  [router-link制作导航](#router-link制作导航)
+  3.  [配置子路由](#配置子路由)
+  4.  [传参](#传参)
 # 安装VueCli
 安装cnpm
 ```bash
