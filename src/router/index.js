@@ -23,6 +23,14 @@ export default new Router({
       left:Left,
       right:Right2
     }
+  },
+  {
+    path: '/redi',
+    redirect:'/'
+  },
+  {
+    path: '/redip/:newsTit/:newsContent',
+    redirect:'/r1/:newsTit/:newsContent'
   }
 ]
 })

@@ -13,6 +13,7 @@ vue学习笔记 来源于网络
   -  [传参](#传参)
   - [单页面多路由区域操作](#单页面多路由区域操作)
   - [通过 url 传参](#通过url传参)
+  - [重定向](#重定向)
 # 安装VueCli
 安装cnpm
 ```bash
@@ -537,4 +538,20 @@ export default new Router({
 
 ```
 path:'/params/:newsId(\\d+)/:newsTitle',
+```
+
+## 重定向
+src/router/index.js
+```
+{
+    path: '/redi', 
+    redirect:'/'
+}
+```
+带参数的重定向
+```
+ {
+    path: '/redip/:newsTit/:newsContent',
+    redirect:'/r1/:newsTit/:newsContent'
+ }
 ```
