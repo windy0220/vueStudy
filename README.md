@@ -611,5 +611,5 @@ src/router/index.js
   - in-out:新元素先进入过渡，完成之后当前元素过渡离开。
   - out-in:当前元素先进行过渡离开，离开完成后新元素过渡进入。
 
-
+> 别名或重定向的 view 切换无法触发动画，另外 transition 只能包含一个组 router-view
 
