@@ -6,7 +6,9 @@
       <router-link to="/">首页</router-link> |
       <router-link to="/r1/新闻标题/新闻内容">page1</router-link> |
       <router-link to="/redi">重定向</router-link> |
-      <router-link to="/redip/重定向tit/重定向内容">带参数重定向</router-link>
+      <router-link to="/redip/重定向tit/重定向内容">带参数重定向</router-link> |
+      <router-link to="/aliaslink/别名tit/别名内容">别名</router-link> |
+      <router-link to="/newHome">新首页</router-link>
     </div>
     <div class="box">
       <router-view></router-view>

@@ -555,3 +555,20 @@ src/router/index.js
     redirect:'/r1/:newsTit/:newsContent'
  }
 ```
+
+## 别名
+`alias:'path'` 别名的路径可以显示到 url 上，但重定向只是显示重定向后的源地址
+
+src/router/index.js
+
+```
+{
+    path: '/r1/:newsTit/:newsContent',
+    name: 'r1',
+    alias:'/aliaslink/:newsTit/:newsContent',
+    components: {
+      left:Left,
+      right:Right2
+    }
+  },
+```

@@ -11,6 +11,7 @@ export default new Router({
   routes: [{
     path: '/',
     name: 'HelloWorld',
+    alias:'/newHome',
     components: {
       left:Left,
       right:Right1
@@ -19,6 +20,7 @@ export default new Router({
   {
     path: '/r1/:newsTit/:newsContent',
     name: 'r1',
+    alias:'/aliaslink/:newsTit/:newsContent',
     components: {
       left:Left,
       right:Right2
