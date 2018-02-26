@@ -10,10 +10,14 @@
       <router-link to="/aliaslink/别名tit/别名内容">别名</router-link> |
       <router-link to="/newHome">新首页</router-link>
     </div>
-    <div class="box">
+    <div class="box"> 
+      
       <router-view></router-view>
       <router-view name="left" class="leftbox"></router-view>
-      <router-view name="right" class="rightbox"></router-view>
+      <transition name="ani" mode="out-in">
+        <router-view name="right" class="rightbox"></router-view>
+      </transition>
+      
     </div>
     
   </div>
@@ -26,6 +30,19 @@ export default {
 </script>
 
 <style>
+.ani-enter{
+  opacity:0;
+}
+.ani-leave{
+  opacity: 1;
+}
+.ani-enter-active{
+  transition: opacity .5s;
+}
+.ani-leave-active{
+  opacity: 0;
+  transition:opacity .5s;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,7 +51,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.box{
+.box {
   width: 1200px;
   margin: 0 auto;
 }

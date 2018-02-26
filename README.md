@@ -14,6 +14,8 @@ vue学习笔记 来源于网络
   - [单页面多路由区域操作](#单页面多路由区域操作)
   - [通过 url 传参](#通过url传参)
   - [重定向](#重定向)
+  - [别名](#别名)
+  - [路由过渡动画](#路由过渡动画)
 # 安装VueCli
 安装cnpm
 ```bash
@@ -572,3 +574,42 @@ src/router/index.js
     }
   },
 ```
+
+## 路由过渡动画
+给要添加动画的 router-view 包裹一个 transition 标签
+```
+<transition name="ani" mode="out-in">
+        <router-view name="right" class="rightbox"></router-view>
+</transition>
+
+```
+
+添加 css 样式
+
+```
+.ani-enter{
+  opacity:0;
+}
+.ani-leave{
+  opacity: 1;
+}
+.ani-enter-active{
+  transition: opacity .5s;
+}
+.ani-leave-active{
+  opacity: 0;
+  transition:opacity .5s;
+}
+```
+
+- name: 过渡动画的css前缀
+  - ani-enter:进入过渡的开始状态，元素被插入时生效，只应用一帧后立刻删除。
+  - ani-enter-active:进入过渡的结束状态，元素被插入时就生效，在过渡过程完成后移除。
+  - ani-leave:离开过渡的开始状态，元素被删除时触发，只应用一帧后立刻删除。
+  - ani-leave-active:离开过渡的结束状态，元素被删除时生效，离开过渡完成后被删除。
+- mode: 过度模式 
+  - in-out:新元素先进入过渡，完成之后当前元素过渡离开。
+  - out-in:当前元素先进行过渡离开，离开完成后新元素过渡进入。
+
+
+
