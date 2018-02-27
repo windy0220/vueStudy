@@ -17,6 +17,7 @@ vue学习笔记 来源于网络
   - [别名](#别名)
   - [路由过渡动画](#路由过渡动画)
   - [404页面](#404)
+  - [URL Mode](#URL Mode)
 # 安装VueCli
 安装cnpm
 ```bash
@@ -627,4 +628,17 @@ src/router/index.js
     path: '*',
     component: Error
 }
+```
+
+# URL Mode
+在 src/router/index.js 中定义
+- mode: 'hash' : url 中带 # 
+- mode: 'hhistory' : url 中不带＃ 默认值
+
+src/router/index.js
+```
+export default new Router({
+  mode: 'history',
+  routes: [{
+    ....
 ```
