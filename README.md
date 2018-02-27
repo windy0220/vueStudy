@@ -16,6 +16,7 @@ vue学习笔记 来源于网络
   - [重定向](#重定向)
   - [别名](#别名)
   - [路由过渡动画](#路由过渡动画)
+  - [404页面](#404)
 # 安装VueCli
 安装cnpm
 ```bash
@@ -613,3 +614,17 @@ src/router/index.js
 
 > 别名或重定向的 view 切换无法触发动画，另外 transition 只能包含一个组 router-view
 
+# 404
+如果用户输入的路径在 router 中没有定义，展示该页面
+
+在 src/componets 下新建 Error.vue 组件
+
+在 src/router/index.js 中导入 routes 中定义
+
+src/router/index.js
+```
+{
+    path: '*',
+    component: Error
+}
+```

@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Right1 from '@/components/right1'
 import Right2 from '@/components/right2'
 import Left from '@/components/left'
+import Error from '@/components/Error'
 
 Vue.use(Router)
 
@@ -33,6 +34,10 @@ export default new Router({
   {
     path: '/redip/:newsTit/:newsContent',
     redirect:'/r1/:newsTit/:newsContent'
+  },
+  {
+    path: '*',
+    component: Error
   }
 ]
 })
