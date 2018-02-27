@@ -5,6 +5,7 @@ import Right1 from '@/components/right1'
 import Right2 from '@/components/right2'
 import Left from '@/components/left'
 import Error from '@/components/Error'
+import Hook from '@/components/Hook'
 
 Vue.use(Router)
 
@@ -26,6 +27,16 @@ export default new Router({
     components: {
       left:Left,
       right:Right2
+    }
+  },
+  {
+    path:'/hook',
+    name:'hook',
+    component:Hook,
+    beforeEnter:(to, from,  next)=>{
+      console.log("到达路径" + to.path)
+      console.log("来源路径" + from.path)
+      next()
     }
   },
   {

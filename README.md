@@ -18,6 +18,7 @@ vue学习笔记 来源于网络
   - [路由过渡动画](#路由过渡动画)
   - [404页面](#404)
   - [URL Mode](#URL Mode)
+  - [路由配置文件中的钩子](#路由配置文件中的钩子)
 # 安装VueCli
 安装cnpm
 ```bash
@@ -642,3 +643,22 @@ export default new Router({
   routes: [{
     ....
 ```
+
+## 路由配置文件中的钩子
+
+src/router/index.js
+```
+ {
+    path:'/hook',
+    name:'hook',
+    component:Hook,
+    beforeEnter:(to, from,  next)=>{
+      console.log(to)
+      console.log(from)
+      next()
+    }
+  },
+```
+- to:路由将要跳转的路径信息，信息是包含在对像里边的。
+- from:路径跳转前的路径信息，也是一个对象的形式。
+- next:路由的控制参数，常用的有next(true)和next(false)。注意：不写 next() 将导致页面不加载
