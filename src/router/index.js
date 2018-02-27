@@ -6,6 +6,7 @@ import Right2 from '@/components/right2'
 import Left from '@/components/left'
 import Error from '@/components/Error'
 import Hook from '@/components/Hook'
+import Com_hook from '@/components/Com_hook'
 
 Vue.use(Router)
 
@@ -38,6 +39,11 @@ export default new Router({
       console.log("来源路径" + from.path)
       next()
     }
+  },
+  {
+    path:'/com_hook',
+    name:'com_hook',
+    component:Com_hook
   },
   {
     path: '/redi',

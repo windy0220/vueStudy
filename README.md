@@ -19,6 +19,7 @@ vue学习笔记 来源于网络
   - [404页面](#404)
   - [URL Mode](#URL Mode)
   - [路由配置文件中的钩子](#路由配置文件中的钩子)
+  - [组件中的钩子函数](#组件中的钩子函数)
 # 安装VueCli
 安装cnpm
 ```bash
@@ -662,3 +663,29 @@ src/router/index.js
 - to:路由将要跳转的路径信息，信息是包含在对像里边的。
 - from:路径跳转前的路径信息，也是一个对象的形式。
 - next:路由的控制参数，常用的有next(true)和next(false)。注意：不写 next() 将导致页面不加载
+
+## 组件中的钩子函数
+
+组件中可以使用两个钩子函数
+- beforeRouteEnter：在路由进入前的钩子函数。
+- beforeRouteLeave：在路由离开前的钩子函数。
+
+src/components/Com_Hook.vue
+```
+export default {
+  name: "Com_Hook",
+  data() {
+    return {
+      msg: "This is my vue Hook 请查看控制台"
+    };
+  },
+  beforeRouteEnter: (to, from, next) => {
+    console.log("准备进入模板")
+    next()
+  },
+  beforeRouteLeave: (to, from, next) => {
+    console.log("准备离开模板")
+    next()
+  }
+};
+```
