@@ -3,6 +3,11 @@
     <img src="./assets/logo.png">
     
     <div class="nav">
+      <div>
+        <button @click="goBack">后退</button>
+        <button @click="goNext">前进</button>
+        <button @click="goHome">首页</button>
+      </div>
       <router-link to="/">首页</router-link> |
       <router-link to="/r1/新闻标题/新闻内容">page1</router-link> |
       <router-link to="/redi">重定向</router-link> |
@@ -28,7 +33,18 @@
 
 <script>
 export default {
-  name: "App"
+  name: "App",
+  methods:{
+    goBack(){
+      this.$router.go(-1)
+    },
+    goNext(){
+      this.$router.go(1)
+    },
+    goHome(){
+      this.$router.push('/')
+    }
+  }
 };
 </script>
 

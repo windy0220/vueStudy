@@ -20,6 +20,7 @@ vue学习笔记 来源于网络
   - [URL Mode](#URL Mode)
   - [路由配置文件中的钩子](#路由配置文件中的钩子)
   - [组件中的钩子函数](#组件中的钩子函数)
+  - [编程式导航](#编程式导航)
 # 安装VueCli
 安装cnpm
 ```bash
@@ -688,4 +689,41 @@ export default {
     next()
   }
 };
+```
+
+## 编程式导航
+- this.$router.go(-1) 后退
+- this.$router.go(1) 前进
+- this.$router.push('/') 跳转的相应的路径
+
+src/App.vue
+
+```
+...
+<template>
+<div>
+        <button @click="goBack">后退</button>
+        <button @click="goNext">前进</button>
+        <button @click="goHome">首页</button>
+</div>
+</template>
+
+...
+<script>
+export default {
+  name: "App",
+  methods:{
+    goBack(){
+      this.$router.go(-1)
+    },
+    goNext(){
+      this.$router.go(1)
+    },
+    goHome(){
+      this.$router.push('/')
+    }
+  }
+};
+</script>
+...
 ```
