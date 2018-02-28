@@ -16,7 +16,8 @@
       <router-link to="/newHome">新首页</router-link> |
       <router-link to="/hook">钩子函数</router-link> |
       <router-link to="/com_hook">组件中的钩子函数</router-link> |
-      <router-link to="/errorpage">404</router-link>
+      <router-link to="/errorpage">404</router-link> |
+      <router-link to="/count"> count</router-link>
     </div>
     <div class="box"> 
       

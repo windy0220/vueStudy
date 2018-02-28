@@ -7,6 +7,7 @@ import Left from '@/components/left'
 import Error from '@/components/Error'
 import Hook from '@/components/Hook'
 import Com_hook from '@/components/Com_hook'
+import Count from '@/components/Count'
 
 Vue.use(Router)
 
@@ -56,6 +57,10 @@ export default new Router({
   {
     path: '*',
     component: Error
+  },
+  {
+    path:'/count',
+    component:Count
   }
 ]
 })

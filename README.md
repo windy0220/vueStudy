@@ -21,6 +21,8 @@ vue学习笔记 来源于网络
   - [路由配置文件中的钩子](#路由配置文件中的钩子)
   - [组件中的钩子函数](#组件中的钩子函数)
   - [编程式导航](#编程式导航)
+- [Vuex](#vuex)
+ - [安装vuex](#安装vuex )
 # 安装VueCli
 安装cnpm
 ```bash
@@ -727,3 +729,75 @@ export default {
 </script>
 ...
 ```
+
+# vuex
+## 安装vuex
+```
+cnpm i vuex --save
+```
+--save 是因为vuex是要在生产环境调用的
+
+在 src 下新建数据仓库 src/vuex/store.js
+
+src/vuex/store.js
+```js
+//引入 vue 和 vuex
+import Vue from "vue"
+import Vuex from "vuex"
+
+//使用 vuex
+Vue.use(Vuex)
+
+//state 
+const state={
+    count: 3
+}
+
+//mutations
+const mutations = {
+    add(state){
+        state.count ++
+    },
+    cut(state){
+        state.count --
+    }
+}
+
+//导出 state 和 mutations
+export default new Vuex.Store({
+    state,mutations
+})
+
+```
+
+在 组件中使用
+src/component/count.vue
+``` html
+<template>
+    <div>
+        <h3>{{ msg }}</h3>
+        <div>{{ $store.state.count }}</div>
+        <button @click="$store.commit('add')">加</button>
+        <button @click="$store.commit('cut')">减</button>
+    </div>
+</template>
+
+<script>
+    import store from '@/vuex/store'
+    export default {
+        data() {
+            return {
+                msg: 'Hello Vuex'
+            }
+        },
+        store
+    }
+</script>
+```
+使用需先导入  `import store from '@/vuex/store'`
+
+并写入到 export default 中
+
+调用
+- 数据 ` $store.state.count`
+- 方法 `$store.commit('add')` 注意括号中要加引号
