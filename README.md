@@ -817,6 +817,7 @@ computed: {
 computed属性可以在输出前，对data中的值进行改变，我们就利用这种特性把store.js中的state值赋值给我们模板中的data值。
 
 2. 方法二
+> 注意这里 要带{ }
 ```js
 import {mapState} from 'vuex'
 
@@ -833,3 +834,37 @@ computed:mapState(["count"])
 
 使用以上三种方法就可以在 template 中直接调用 {{count}} 了
 
+## mutations 修改状态
+1. 传参
+
+store.js
+```js
+const mutations={
+    add(state,n){
+        state.count+=n;
+    },
+    reduce(state){
+        state.count--;
+    }
+}
+```
+count.vue
+```js
+<button @click="$store.commit('add',10)">+</button>
+```
+
+2. 简化调用方式
+
+count.vue
+```html
+import { mapState,mapMutations } from 'vuex';
+
+<button @click="reduce">-</button>
+<button @click="add(10)">-</button>
+
+<script>
+ methods:mapMutations([
+        'add','reduce'
+]),
+</script>
+```
