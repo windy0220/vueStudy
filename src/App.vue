@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    
+
     <div class="nav">
       <div>
         <button @click="goBack">后退</button>
@@ -19,16 +19,16 @@
       <router-link to="/errorpage">404</router-link> |
       <router-link to="/count"> count</router-link>
     </div>
-    <div class="box"> 
-      
+    <div class="box">
+
       <router-view></router-view>
       <router-view name="left" class="leftbox"></router-view>
       <transition name="ani" mode="out-in">
         <router-view name="right" class="rightbox"></router-view>
       </transition>
-      
+
     </div>
-    
+
   </div>
 </template>
 

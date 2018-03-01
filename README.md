@@ -23,6 +23,7 @@ vue学习笔记 来源于网络
   - [编程式导航](#编程式导航)
 - [Vuex](#vuex)
  - [安装vuex](#安装vuex )
+ - [简化state的调用](#简化state的调用)
 # 安装VueCli
 安装cnpm
 ```bash
@@ -84,7 +85,7 @@ vue init webpack <项目名称>
 |-- .editorconfig                    // 定义代码格式 *
 |-- .gitignore                       // git上传需要忽略的文件格式
 |-- README.md                        // 项目说明
-|-- favicon.ico 
+|-- favicon.ico
 |-- index.html                       // 入口页面
 |-- package.json                     // 项目基本信息
 ```
@@ -92,12 +93,12 @@ vue init webpack <项目名称>
 ## main.js文件解读
 main.js是整个项目的入口文件,在src文件夹下：
 ```js
-import Vue from 'vue'      
+import Vue from 'vue'
 import App from './App'
 import router from './router'
- 
+
 Vue.config.productionTip = false   //生产环境提示，这里设置成了false
- 
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -116,13 +117,13 @@ new Vue({
     <router-view></router-view>
   </div>
 </template>
- 
+
 <script>
 export default {
   name: 'app'
 }
 </script>
- 
+
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -148,9 +149,9 @@ app.vue文件我们可以分成三部分解读，
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
- 
+
 Vue.use(Router)
- 
+
 export default new Router({
   routes: [
     {
@@ -188,7 +189,7 @@ export default new Router({
     </ul>
   </div>
 </template>
- 
+
 <script>
 export default {
   name: 'hello',
@@ -199,23 +200,23 @@ export default {
   }
 }
 </script>
- 
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
   font-weight: normal;
 }
- 
+
 ul {
   list-style-type: none;
   padding: 0;
 }
- 
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
- 
+
 a {
   color: #42b983;
 }
@@ -235,9 +236,9 @@ cnpm i vue-router --save-dev
 import Vue from 'vue'   //引入Vue
 import Router from 'vue-router'  //引入vue-router
 import Hello from '@/components/Hello'  //引入根目录下的Hello.vue组件
- 
+
 Vue.use(Router)  //Vue全局使用Router
- 
+
 export default new Router({
   routes: [              //配置路由，这里是个数组
     {                    //每一个链接都是一个对象
@@ -301,10 +302,10 @@ import Hi from '@/components/Hi'
 import Vue from 'vue'   //引入Vue
 import Router from 'vue-router'  //引入vue-router
 import Hello from '@/components/Hello'  //引入根目录下的Hello.vue组件
-import Hi from '@/components/Hi' 
- 
+import Hi from '@/components/Hi'
+
 Vue.use(Router)  //Vue全局使用Router
- 
+
 export default new Router({
   routes: [              //配置路由，这里是个数组
     {                    //每一个链接都是一个对象
@@ -342,7 +343,7 @@ export default new Router({
 用 `<router-link>` 标签增加了两个新的导航链接。
 ```js
 <p>导航 ：
-      <router-link to="/">首页</router-link> | 
+      <router-link to="/">首页</router-link> |
       <router-link to="/hi">Hi页面</router-link> |
       <router-link to="/hi/hi1">-Hi页面1</router-link> |
       <router-link to="/hi/hi2">-Hi页面2</router-link>
@@ -357,11 +358,11 @@ export default new Router({
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
- 
+
     <router-view class="aaa"></router-view>
   </div>
 </template>
- 
+
 <script>
 export default {
   name: 'hi',
@@ -373,7 +374,7 @@ export default {
 }
 </script>
 <style scoped>
- 
+
 </style>
 ```
 在components目录下新建两个组件模板 Hi1.vue 和 Hi2.vue
@@ -398,28 +399,28 @@ export default {
 }
 </script>
 <style scoped>
- 
+
 </style>
 ```
 
 修改router/index.js代码
 改变我们的路由配置文件就可以了。子路由的写法是在原有的路由配置下加入children字段。
 ```js
-import Vue from 'vue'   
-import Router from 'vue-router'  
-import Hello from '@/components/Hello'  
-import Hi from '@/components/Hi' 
-import Hi1 from '@/components/Hi1' 
-import Hi2 from '@/components/Hi2' 
- 
-Vue.use(Router) 
- 
+import Vue from 'vue'
+import Router from 'vue-router'
+import Hello from '@/components/Hello'
+import Hi from '@/components/Hi'
+import Hi1 from '@/components/Hi1'
+import Hi2 from '@/components/Hi2'
+
+Vue.use(Router)
+
 export default new Router({
-  routes: [             
-    {                    
-      path: '/',        
-      name: 'Hello',     
-      component: Hello   
+  routes: [
+    {
+      path: '/',
+      name: 'Hello',
+      component: Hello
     },{
       path:'/hi',
       component:Hi,
@@ -492,7 +493,7 @@ src/App.vue
 
 `components` 中定义各 `router-view` 的显示内容 `routerViewName:componentName`
 
-> 坑 component  注意加 
+> 坑 component  注意加
 
 src/router/index.js
 
@@ -530,7 +531,7 @@ export default new Router({
     }
 }
 ```
-在 App.vue router-link 中加入要传递的参数 
+在 App.vue router-link 中加入要传递的参数
 
 ```
 <router-link to="/r1/新闻标题/新闻内容">page1</router-link>
@@ -553,7 +554,7 @@ path:'/params/:newsId(\\d+)/:newsTitle',
 src/router/index.js
 ```
 {
-    path: '/redi', 
+    path: '/redi',
     redirect:'/'
 }
 ```
@@ -614,7 +615,7 @@ src/router/index.js
   - ani-enter-active:进入过渡的结束状态，元素被插入时就生效，在过渡过程完成后移除。
   - ani-leave:离开过渡的开始状态，元素被删除时触发，只应用一帧后立刻删除。
   - ani-leave-active:离开过渡的结束状态，元素被删除时生效，离开过渡完成后被删除。
-- mode: 过度模式 
+- mode: 过度模式
   - in-out:新元素先进入过渡，完成之后当前元素过渡离开。
   - out-in:当前元素先进行过渡离开，离开完成后新元素过渡进入。
 
@@ -637,7 +638,7 @@ src/router/index.js
 
 # URL Mode
 在 src/router/index.js 中定义
-- mode: 'hash' : url 中带 # 
+- mode: 'hash' : url 中带 #
 - mode: 'hhistory' : url 中不带＃ 默认值
 
 src/router/index.js
@@ -748,7 +749,7 @@ import Vuex from "vuex"
 //使用 vuex
 Vue.use(Vuex)
 
-//state 
+//state
 const state={
     count: 3
 }
@@ -801,3 +802,34 @@ src/component/count.vue
 调用
 - 数据 ` $store.state.count`
 - 方法 `$store.commit('add')` 注意括号中要加引号
+
+## 简化state的调用
+src/component/count
+
+1. 方法一
+```js
+computed: {
+    count() {
+      return this.$store.state.count;
+    }
+  }
+```
+computed属性可以在输出前，对data中的值进行改变，我们就利用这种特性把store.js中的state值赋值给我们模板中的data值。
+
+2. 方法二
+```js
+import {mapState} from 'vuex'
+
+computed:mapState({
+        count:state=>state.count
+ })
+```
+
+3. 方法三 这种方法最简单
+```js
+import {mapState} from 'vuex'
+computed:mapState(["count"])
+```
+
+使用以上三种方法就可以在 template 中直接调用 {{count}} 了
+
