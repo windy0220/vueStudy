@@ -24,6 +24,9 @@ vue学习笔记 来源于网络
 - [Vuex](#vuex)
  - [安装vuex](#安装vuex )
  - [简化state的调用](#简化state的调用)
+ - [getters过滤器](#getters过滤器)
+ - [actions异步修改状态](#actions异步修改状态)
+ - [modue模块组](#module模块组)
 # 安装VueCli
 安装cnpm
 ```bash
@@ -889,4 +892,86 @@ src/component/count.vue
       ...mapGetters(['count'])
   },
 
+```
+> ...为 es6 的扩展运算符
+
+## actions异步修改状态
+actions和之前讲的Mutations功能基本一样，不同点是，actions是异步的改变state状态，而Mutations是同步改变状态。
+
+在store.js中声明actions
+actions是可以调用Mutations里的方法的，我们还是继续在上节课的代码基础上进行学习，在actions里调用add和reduce两个方法。
+
+```js
+const actions ={
+    addAction(context){
+        context.commit('add',10)
+    },
+    reduceAction({commit}){
+        commit('reduce')
+    }
+```
+在actions里写了两个方法addAction和reduceAction，在方法体里，我们都用commit调用了Mutations里边的方法。细心的小伙伴会发现这两个方法传递的参数也不一样。
+
+context：上下文对象，这里你可以理解称store本身。
+{commit}：直接把commit对象传递过来，可以让方法体逻辑和代码更清晰明了。
+模板中的使用
+我们需要在count.vue模板中编写代码，让actions生效。我们先复制两个以前有的按钮，并改成我们的actions里的方法名，分别是：addAction和reduceAction。
+
+```html
+<p>
+  <button @click="addAction">+</button>
+  <button @click="cutAction">-</button>
+</p>
+```
+改造一下我们的methods方法，首先还是用扩展运算符把mapMutations和mapActions加入。
+
+```js
+methods:{
+    ...mapMutations([
+        'add','cut'
+    ]),
+    ...mapActions(['addAction','cutAction'])
+},
+```
+你还要记得用import把我们的mapActions引入才可以使用。
+
+增加异步检验
+我们现在看的效果和我们用Mutations作的一模一样，肯定有的小伙伴会好奇，那actions有什么用，我们为了演示actions的异步功能，我们增加一个计时器（setTimeOut）延迟执行。在addAction里使用setTimeOut进行延迟执行。
+
+```js
+setTimeOut(()=>{context.commit(cut)},3000);
+console.log('我比reduce提前执行');
+```
+我们可以看到在控制台先打印出了‘我比reduce提前执行’这句话。
+
+## modue模块组
+声明模块组：
+在vuex/store.js中声明模块组，我们还是用我们的const常量的方法声明模块组。代码如下：
+
+```js
+const moduleA={
+    state,mutations,getters,actions
+}
+```
+声明好后，我们需要修改原来 Vuex.Stroe里的值：
+
+```js
+export default new Vuex.Store({
+    modules:{a:moduleA}
+})
+```
+在模板中使用
+现在我们要在模板中使用count状态，要用插值的形式写入。
+
+```html
+<h3>{{$store.state.a.count}}</h3>
+```
+如果想用简单的方法引入，还是要在我们的计算属性中rutrun我们的状态。写法如下：
+
+```js
+computed:{
+    count(){
+        return this.$store.state.a.count;
+    }
+},
 ```
