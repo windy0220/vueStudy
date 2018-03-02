@@ -10,23 +10,26 @@
 
 <script>
 import store from "@/vuex/store";
-import { mapState,mapMutations } from "vuex";
+import { mapState, mapMutations, mapGetters } from "vuex";
 export default {
   data() {
     return {
       msg: "Hello Vuex"
     };
   },
-//   computed: {
-//     count() {
-//       return this.$store.state.count;
-//     }
-//   },
-//   computed:mapState({
-//       count:state=>state.count
-//   }),
-  computed: mapState(["count"]),
-  methods:mapMutations(['add','cut']),
+  //   computed: {
+  //     count() {
+  //       return this.$store.state.count;
+  //     }
+  //   },
+  //   computed:mapState({
+  //       count:state=>state.count
+  //   }),
+  computed: {
+      ...mapState(["count"]),
+      ...mapGetters(['count'])
+  },
+  methods: mapMutations(["add", "cut"]),
   store
 };
 </script>

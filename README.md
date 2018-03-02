@@ -57,6 +57,7 @@ vue init webpack <项目名称>
 运行 ```npm run dev``` 启动服务环境
 
 运行 ```npm run build``` 打包文件 将 dist 文件夹下的内容上传到服务器即可。
+> 将 config/index.js 中的 build 下的 assetsPublicPath: '/' 修改为 assetsPublicPath: './'
 
 ## 目录结构
 ```
@@ -867,4 +868,25 @@ import { mapState,mapMutations } from 'vuex';
         'add','reduce'
 ]),
 </script>
+```
+## getters过滤器
+
+src/vuex/store.js
+```js
+const getters = {
+    count:(state)=> state.count +=100
+}
+
+export default new Vuex.Store({
+    state,mutations,getters
+})
+```
+
+src/component/count.vue
+```js
+  computed: {
+      ...mapState(["count"]),
+      ...mapGetters(['count'])
+  },
+
 ```
